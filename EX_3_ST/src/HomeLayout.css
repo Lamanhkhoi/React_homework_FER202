@@ -1,0 +1,45 @@
+.placeholder-img {
+  height: 530px;
+  background-color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #9a9a9a;
+  font-weight: 300;
+}
+
+.product-img {
+  height: 280px;
+  background-color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a9a9a;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sale-ribbon {
+  position: absolute;
+  top: 12px;
+  right: -32px;
+  background: #f0a500;
+  color: #fff;
+  padding: 4px 40px;
+  transform: rotate(45deg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #f0a500;
+  font-weight: 600;
+}
