@@ -50,6 +50,21 @@
   }
 }
 
+/* Gan theo nut Dark/Light (data-bs-theme tren <html>), doc luc voi Bootstrap.
+   Dat sau khoi prefers-color-scheme de co do uu tien cao hon, luon thang. */
+:root[data-bs-theme="dark"] {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+}
+:root[data-bs-theme="light"] {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+}
+
 body {
   margin: 0;
 }

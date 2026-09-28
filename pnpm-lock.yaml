@@ -275,8 +275,11 @@ importers:
         specifier: ^8.3.0
         version: 8.3.1
 
-  Lab3/Lab2/Lab_2:
+  Lab3/Lab3:
     dependencies:
+      bootstrap:
+        specifier: ^5.3.8
+        version: 5.3.8(@popperjs/core@2.11.8)
       react:
         specifier: ^19.2.8
         version: 19.3.0
