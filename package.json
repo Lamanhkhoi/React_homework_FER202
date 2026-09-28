@@ -4,6 +4,11 @@
   "scripts": {
     "dev:ex2": "pnpm --filter ex-2-st dev",
     "dev:ex3": "pnpm --filter ex-3-st dev",
+    "dev:ex4": "pnpm --filter ex-4-st dev",
+    "dev:ex5": "pnpm --filter ex-5-st dev",
+    "dev:lab1": "pnpm --filter lab-1 dev",
+    "dev:lab2": "pnpm --filter lab-2 dev",
+    "dev:lab3": "pnpm --filter lab-3 dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint"
   }
