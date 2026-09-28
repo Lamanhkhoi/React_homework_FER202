@@ -1,13 +1,14 @@
+import Navigation from "./NavigationComponent/Navigation";
 import "./HomeLayout.css";
 import Player from "./Players/Players";
-import Navigation from "./NavigationComponent/Navigation";
+
 
 function HomeLayout() {
   
   return (
     <>
       {/* NAVBAR */}
-      <Navigation />
+      <Navigation/>
 
       {/* CAROUSEL */}
       <div id="mainCarousel" className="carousel slide" data-bs-ride="carousel">

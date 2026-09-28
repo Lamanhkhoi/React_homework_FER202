@@ -1,0 +1,10 @@
+{
+  "name": "react-homework-fer202",
+  "private": true,
+  "scripts": {
+    "dev:ex2": "pnpm --filter ex-2-st dev",
+    "dev:ex3": "pnpm --filter ex-3-st dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  }
+}
