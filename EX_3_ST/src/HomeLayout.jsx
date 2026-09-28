@@ -1,53 +1,13 @@
 import "./HomeLayout.css";
 import Player from "./Players/Players";
+import Navigation from "./NavigationComponent/Navigation";
 
 function HomeLayout() {
   
   return (
     <>
       {/* NAVBAR */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">Navbar</a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navMenu"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navMenu">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" href="#">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Action</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><a className="dropdown-item" href="#">Something else</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" />
-              <button className="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* CAROUSEL */}
       <div id="mainCarousel" className="carousel slide" data-bs-ride="carousel">
@@ -81,18 +41,9 @@ function HomeLayout() {
         <p className="text-muted mb-4">List product description</p>
         <Player/>
       </div>  
-      <div class="container">
-<div class="row">
-  <div class="col-md-6">1</div>
-  <div class="col-md-6">2</div>
-  
-</div></div>
-<div className="row">
-  <div className="col-md-6 offset-md-3">Form đăng nhập</div>
-</div>
-<div className="row justify-content-center">
-  <div className="col-md-6">Form đăng nhập</div>
-</div>
+      
+
+
     </>
    );
  }
