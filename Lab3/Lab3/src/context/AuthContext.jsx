@@ -26,7 +26,7 @@ function AuthProvider({ children }) {
   }, [user]);
 
   const login = () => {
-    setUser({ username: "Aaron" });
+    setUser({ user: "Aaron" });
   };
 
   const logout = () => {
