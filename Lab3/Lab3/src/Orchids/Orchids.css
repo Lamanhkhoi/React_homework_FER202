@@ -3,11 +3,12 @@
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   padding: 24px;
-  background: #f6f3ee;
+  background: var(--bs-body-bg);
 }
 
 .orchid-card {
-  background: #fff;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -52,13 +53,13 @@
   margin: 0 0 4px;
   font-size: 16px;
   font-weight: 700;
-  color: #2f2a26;
+  color: var(--bs-body-color);
 }
 
 .orchid-category {
   margin: 0 0 8px;
   font-size: 13px;
-  color: #8a8378;
+  color: var(--bs-secondary-color, #8a8378);
   font-style: italic;
 }
 
@@ -67,7 +68,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #5a5348;
+  color: var(--bs-body-color);
   margin-bottom: 6px;
 }
 
