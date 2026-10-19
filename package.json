@@ -8,6 +8,7 @@
     "dev:ex5": "pnpm --filter ex-5-st dev",
     "dev:ex6": "pnpm --filter ex-6-st dev",
     "dev:ex7": "pnpm --filter ex-7-st dev",
+    "dev:ex8": "pnpm --filter ex-8-st dev",
     "dev:lab1": "pnpm --filter lab-1 dev",
     "dev:lab2": "pnpm --filter lab-2 dev",
     "dev:lab3": "pnpm --filter lab-3 dev",
