@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Form, Button, Alert } from "react-bootstrap";
 
-// PHẦN 1: giá trị ban đầu (key trùng với name của ô nhập)
+// ===== PHẦN 1: GIÁ TRỊ BAN ĐẦU =====
+// Mỗi key = thuộc tính `name` của một ô nhập (phải trùng tên).
 const initialValues = {
   fullName: "",
   email: "",
@@ -11,7 +11,7 @@ const initialValues = {
   message: "",
 };
 
-// PHẦN 2: luật kiểm tra bằng Yup
+// ===== PHẦN 2: LUẬT KIỂM TRA (YUP) =====
 const validationSchema = Yup.object({
   fullName: Yup.string()
     .required("Vui lòng nhập họ tên")
@@ -24,77 +24,101 @@ const validationSchema = Yup.object({
     .matches(/^0\d{9}$/, "SĐT phải gồm 10 số, bắt đầu bằng 0"),
   message: Yup.string()
     .required("Vui lòng nhập nội dung")
-    .min(2, "Nội dung tối thiểu 10 ký tự"),
+    .min(10, "Nội dung tối thiểu 10 ký tự"),
 });
 
 export default function Contact() {
+  // Tên người vừa gửi, dùng để hiện lời cảm ơn. null = chưa gửi.
   const [sentName, setSentName] = useState(null);
 
-  // PHẦN 3: khởi tạo Formik
+  // ===== PHẦN 3: KHỞI TẠO FORMIK =====
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values) => {
+      // Chỉ chạy khi Yup đã kiểm tra xong và KHÔNG còn lỗi.
       setSentName(values.fullName);
-      resetForm();
+      formik.resetForm();
     },
   });
 
-  // Gọn lại cho mỗi ô: trả về props dùng chung + trạng thái lỗi
-  const field = (name) => ({
-    name,
-    value: formik.values[name],
-    onChange: formik.handleChange,
-    onBlur: formik.handleBlur,
-    isInvalid: formik.touched[name] && !!formik.errors[name],
-  });
-
-  const error = (name) => (
-    <Form.Control.Feedback type="invalid">
-      {formik.errors[name]}
-    </Form.Control.Feedback>
-  );
-
+  // ===== PHẦN 4: GIAO DIỆN =====
   return (
     <div className="container my-4" style={{ maxWidth: 560 }}>
-      <h2 className="mb-3">Contact us</h2>
+      <h2>Contact us</h2>
 
       {sentName && (
-        <Alert variant="success" dismissible onClose={() => setSentName(null)}>
+        <div className="alert alert-success">
           Cảm ơn {sentName}, chúng tôi đã nhận được tin nhắn của bạn!
-        </Alert>
+          <button onClick={() => setSentName(null)}>Đóng</button>
+        </div>
       )}
 
-      {/* noValidate: tắt kiểm tra của trình duyệt, chỉ để Yup kiểm tra */}
-      <Form onSubmit={formik.handleSubmit} noValidate>
-        <Form.Group className="mb-3" controlId="fullName">
-          <Form.Label>Full name</Form.Label>
-          <Form.Control type="text" {...field("fullName")} />
-          {error("fullName")}
-        </Form.Group>
+      <form onSubmit={formik.handleSubmit} noValidate>
+        <div className="mb-3">
+          <label>Full name: </label>
+          <input
+            type="text"
+            name="fullName"
+            className="form-control"
+            value={formik.values.fullName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.fullName && formik.errors.fullName && (
+            <div style={{ color: "red" }}>{formik.errors.fullName}</div>
+          )}
+        </div>
 
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" {...field("email")} />
-          {error("email")}
-        </Form.Group>
+        <div className="mb-3">
+          <label>Email: </label>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div style={{ color: "red" }}>{formik.errors.email}</div>
+          )}
+        </div>
 
-        <Form.Group className="mb-3" controlId="phone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" {...field("phone")} />
-          {error("phone")}
-        </Form.Group>
+        <div className="mb-3">
+          <label>Phone: </label>
+          <input
+            type="text"
+            name="phone"
+            className="form-control"
+            value={formik.values.phone}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.phone && formik.errors.phone && (
+            <div style={{ color: "red" }}>{formik.errors.phone}</div>
+          )}
+        </div>
 
-        <Form.Group className="mb-3" controlId="message">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows={4} {...field("message")} />
-          {error("message")}
-        </Form.Group>
+        <div className="mb-3">
+          <label>Message: </label>
+          <textarea
+            name="message"
+            rows={4}
+            className="form-control"
+            value={formik.values.message}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.message && formik.errors.message && (
+            <div style={{ color: "red" }}>{formik.errors.message}</div>
+          )}
+        </div>
 
-        <Button type="submit" variant="primary">
+        <button type="submit" className="btn btn-primary">
           Send
-        </Button>
-      </Form>
+        </button>
+      </form>
     </div>
   );
 }
