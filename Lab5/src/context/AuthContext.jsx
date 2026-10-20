@@ -7,7 +7,6 @@ const AuthContext = createContext({
 });
 
 function AuthProvider({ children }) {
-  // State luu nguoi dung dang dang nhap. null = chua dang nhap.
   const [user, setUser] = useState(null);
 
   useEffect(() => {

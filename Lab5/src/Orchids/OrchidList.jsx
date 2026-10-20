@@ -3,8 +3,6 @@ import "./Orchids.css";
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 
-// Nhận danh sách qua props (Home và Natural cùng dùng lại).
-// Giữ state selectedOrchid + Modal như Lab 2.
 export default function OrchidList({ orchids }) {
   const [selectedOrchid, setSelectedOrchid] = useState(null);
 

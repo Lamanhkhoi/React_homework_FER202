@@ -20,9 +20,7 @@ export default function OrchidCard({ orchid, onShowDetail }) {
           ></span>
           <span>{origin}</span>
         </div>
-        {/* Lab 2: mở modal (popup) xem nhanh */}
         <button onClick={() => onShowDetail(orchid)}>Quick view</button>
-        {/* Lab 5: sang trang /detail/<id> (id nằm trên URL) */}
         <button onClick={() => navigate(`/detail/${id}`)}>Details</button>
         <p className="orchid-rating">
           {"★".repeat(rating)}

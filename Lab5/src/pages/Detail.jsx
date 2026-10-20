@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { ListOfOrchids } from "../data/ListOfOrchids";
 
 export default function Detail() {
-  const { id } = useParams();            // id lấy từ URL: /detail/:id
+  const { id } = useParams();
   const navigate = useNavigate();
   const orchid = ListOfOrchids.find((o) => o.id === id);
 

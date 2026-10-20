@@ -29,57 +29,62 @@ function reducer(state, action) {
 const products = [
     { id: 1, name: "Item 1", price: 5 },
     { id: 2, name: "Item 2", price: 10 },
+    { id: 3, name: "Item 3", price: 20} 
 ];
 
 export default function ShoppingCart() {
 
     const [cart, dispatch] = useReducer(reducer, initialState)
-    // const [newQuantity, setUpdateQuantity] = useState();
     const totalQuantity = cart.items.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    // order = null khi chưa đặt hàng; có giá trị sau khi submit form thành công
     const [order, setOrder] = useState(null);
 
     function handleOrderSubmit(values) {
-        // 1) Lưu lại bản "chụp" đơn hàng (thông tin khách + giỏ hiện tại + tổng)
         setOrder({
             customer: values,
             items: cart.items,
             totalQuantity,
             totalPrice,
         });
-        // 2) Xóa giỏ hàng
         dispatch({ type: "clear" });
     }
 
     return(
         <>
-            <h3> Product list:</h3>
-            <ul>
-                {products.map((p) => (
-                    <li key={p.id}>
-                        {p.name} - {p.price}$  
-                        <button onClick={() => dispatch({type: "add", products: p})}>Add to cart</button>
-                    </li>
-                ))}
-            </ul>
+            <section className="card">
+                <h3> Product list:</h3>
+                <ul>
+                    {products.map((p) => (
+                        <li key={p.id}>
+                            <span className="name">{p.name}</span>
+                            <span className="price">{p.price}$</span>
+                            <button onClick={() => dispatch({type: "add", products: p})}>Add to cart</button>
+                        </li>
+                    ))}
+                </ul>
+            </section>
 
-            <h3>Shopping cart: </h3>
-            <ul>
-                {cart.items.map((item) => (
-                    <li key={item.id}>
-                        {item.name} - {item.price}$
-                        <input type="number" min="1" value={item.quantity}
-                        onChange={(e) => dispatch({ type: "update_quantity", products: {id: item.id, quantity: Number(e.target.value)}})}
-                        />
-                        <button onClick={() => dispatch({ type: "remove", id: item.id })}>Remove</button>
-                    </li>
-                ))}
-            </ul>
-            <p>Total Quantity: {totalQuantity}</p>
-            <p>Total Price: {totalPrice}$</p>
-            <button onClick={() => dispatch({ type: "clear" })}>Clear cart</button>
+            <section className="card">
+                <h3>Shopping cart: </h3>
+                {cart.items.length === 0 && <p className="empty">Your cart is empty. Add an item above to start.</p>}
+                <ul>
+                    {cart.items.map((item) => (
+                        <li key={item.id}>
+                            <span className="name">{item.name}</span>
+                            <span className="price">{item.price}$</span>
+                            <input type="number" min="1" value={item.quantity}
+                            aria-label={"Quantity of " + item.name}
+                            onChange={(e) => dispatch({ type: "update_quantity", products: {id: item.id, quantity: Number(e.target.value)}})}
+                            />
+                            <button className="btn-danger" onClick={() => dispatch({ type: "remove", id: item.id })}>Remove</button>
+                        </li>
+                    ))}
+                </ul>
+                <p className="totals">Total Quantity: <strong>{totalQuantity}</strong></p>
+                <p className="totals">Total Price: <strong>{totalPrice}$</strong></p>
+                <button className="btn-danger cart-actions" onClick={() => dispatch({ type: "clear" })}>Clear cart</button>
+            </section>
             <CheckoutForm
                 isCartEmpty={cart.items.length === 0}
                 onOrderSubmit={handleOrderSubmit}
