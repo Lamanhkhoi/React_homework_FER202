@@ -1,8 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-// ===== PHẦN 1: GIÁ TRỊ BAN ĐẦU =====
-// Mỗi key ở đây = thuộc tính `name` của một ô nhập (phải trùng tên).
 const initialValues = {
   fullName: "",
   email: "",
@@ -12,106 +10,103 @@ const initialValues = {
   agreeTerms: false,
 };
 
-// ===== PHẦN 2: LUẬT KIỂM TRA (YUP) =====
-// Mỗi key = một ô, viết luật cho ô đó. Chuỗi trong ngoặc là câu báo lỗi.
 const validationSchema = Yup.object({
-  fullName: Yup.string().required("Vui lòng nhập họ tên").min(2, "Họ tên tối thiểu 2 ký tự"),
-
-  // TODO email: required + email
-  email: Yup.string().required("Nhập đầy đủ email").email("Email không hợp lệ"),
-  // TODO phone: required + matches(regex, "...")   (gợi ý regex: /^0\d{9}$/)
-  phone: Yup.string().required("Nhập số điện thoại").matches(/^0\d{9}$/, "SĐT phải gồm 10 số, bắt đầu bằng 0"),
-  // TODO address: required
-  address: Yup.string().required("Nhập địa chỉ cụ thể"),
-  // TODO paymentMethod: required   (giá trị COD hoặc Card)
-  paymentMethod: Yup.string().required("Vui lòng chọn phương thức thanh toán"),
-  // TODO agreeTerms: boolean + oneOf([true], "...")
-  agreeTerms: Yup.boolean().oneOf([true], "Phải đồng ý điều khoản")
+  fullName: Yup.string()
+    .required("Vui lòng nhập họ tên")
+    .min(2, "Họ tên tối thiểu 2 ký tự"),
+  email: Yup.string()
+    .required("Nhập đầy đủ email") 
+    .matches(/^0+[^\s@]+@gmail\.com$/, "Email không hợp lệ"),
+  phone: Yup.string()
+    .required("Nhập số điện thoại")
+    .matches(/\d{11}$/, "SĐT phải gồm 10 số, bắt đầu bằng 0"),
+  address: Yup.string()
+    .required("Nhập địa chỉ cụ thể"),
+  paymentMethod: Yup.string()
+    .required("Vui lòng chọn phương thức thanh toán"),
+  agreeTerms: Yup.boolean()
+    .oneOf([true], "Phải đồng ý điều khoản")
 });
 
-// Props:
-//  - isCartEmpty: true nếu giỏ trống (để khóa nút Submit)
-//  - onOrderSubmit: hàm cha truyền vào, gọi khi submit thành công (bước 4)
 export default function CheckoutForm({ isCartEmpty, onOrderSubmit }) {
-  // ===== PHẦN 3: KHỞI TẠO FORMIK =====
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      // Chỉ chạy khi Yup đã kiểm tra xong và KHÔNG còn lỗi.
-      // TODO bước 4: gọi onOrderSubmit(values), rồi formik.resetForm()
-        onOrderSubmit(values);   // báo cho cha: "khách đã đặt hàng, đây là thông tin"
+        onOrderSubmit(values);
         formik.resetForm();
     },
   });
 
-  // ===== PHẦN 4: GIAO DIỆN =====
   return (
-    <form onSubmit={formik.handleSubmit} noValidate>
+    <form className="card" onSubmit={formik.handleSubmit} noValidate>
       <h3>Checkout</h3>
 
-      {/* --- fullName: ví dụ hoàn chỉnh, các ô khác làm theo mẫu này --- */}
-      <div>
-        <label>Full name: </label>
+      <div className="field">
+        <label htmlFor="fullName">Full name: </label>
         <input
           type="text"
+          id="fullName"
           name="fullName"
+          className={formik.touched.fullName && formik.errors.fullName ? "invalid" : ""}
           value={formik.values.fullName}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         {formik.touched.fullName && formik.errors.fullName && (
-          <div style={{ color: "red" }}>{formik.errors.fullName}</div>
+          <div className="error" role="alert">{formik.errors.fullName}</div>
         )}
       </div>
 
-      {/* TODO email (type="email")   -> giống mẫu fullName */}
-      <div>
-        <label>Email: </label>
+      <div className="field">
+        <label htmlFor="email">Email: </label>
         <input
           type="email"
+          id="email"
           name="email"
+          className={formik.touched.email && formik.errors.email ? "invalid" : ""}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         {formik.touched.email && formik.errors.email && (
-          <div style={{ color: "red" }}>{formik.errors.email}</div>
+          <div className="error" role="alert">{formik.errors.email}</div>
         )}
       </div>
-      {/* TODO phone (type="text")    -> giống mẫu fullName */}
-      <div>
-        <label>Phone: </label>
+      <div className="field">
+        <label htmlFor="phone">Phone: </label>
         <input
           type="text"
+          id="phone"
           name="phone"
+          className={formik.touched.phone && formik.errors.phone ? "invalid" : ""}
           value={formik.values.phone}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         {formik.touched.phone && formik.errors.phone && (
-          <div style={{ color: "red" }}>{formik.errors.phone}</div>
+          <div className="error" role="alert">{formik.errors.phone}</div>
         )}
       </div>
-      {/* TODO address                -> giống mẫu fullName */}
-      <div>
-        <label>Address: </label>
+      <div className="field">
+        <label htmlFor="address">Address: </label>
         <input
           type="text"
+          id="address"
           name="address"
+          className={formik.touched.address && formik.errors.address ? "invalid" : ""}
           value={formik.values.address}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         {formik.touched.address && formik.errors.address && (
-          <div style={{ color: "red" }}>{formik.errors.address}</div>
+          <div className="error" role="alert">{formik.errors.address}</div>
         )}
       </div>
 
-      {/* TODO paymentMethod: 2 radio cùng name="paymentMethod",
-          value="COD" và value="Card", dùng checked={formik.values.paymentMethod === "COD"} */}
-        <div>
+        <div className="field">
   <label>Payment method: </label>
+  <div className="radio-group">
   <label>
     <input
       type="radio"
@@ -132,14 +127,13 @@ export default function CheckoutForm({ isCartEmpty, onOrderSubmit }) {
     />
     Card
   </label>
+  </div>
   {formik.touched.paymentMethod && formik.errors.paymentMethod && (
-    <div style={{ color: "red" }}>{formik.errors.paymentMethod}</div>
+    <div className="error" role="alert">{formik.errors.paymentMethod}</div>
   )}
 </div>
-      {/* TODO agreeTerms: <input type="checkbox" name="agreeTerms"
-          checked={formik.values.agreeTerms} onChange={formik.handleChange} /> */}
-        <div>
-        <label>Tôi đồng ý điều khoản: </label>
+        <div className="field">
+        <label className="checkbox">
         <input
           type="checkbox"
           name="agreeTerms"
@@ -147,8 +141,10 @@ export default function CheckoutForm({ isCartEmpty, onOrderSubmit }) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
+        Tôi đồng ý điều khoản
+        </label>
         {formik.touched.agreeTerms && formik.errors.agreeTerms && (
-          <div style={{ color: "red" }}>{formik.errors.agreeTerms}</div>
+          <div className="error" role="alert">{formik.errors.agreeTerms}</div>
         )}
       </div>
       <button type="submit" disabled={isCartEmpty}>

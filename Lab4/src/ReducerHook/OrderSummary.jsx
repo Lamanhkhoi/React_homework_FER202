@@ -1,9 +1,8 @@
-// Component chỉ để hiển thị: nhận order qua props, không có state/logic riêng.
 export default function OrderSummary({ order }) {
     const { customer, items, totalQuantity, totalPrice } = order;
 
     return (
-        <div>
+        <div className="card order">
             <h3>Order confirmation</h3>
             <p>Full name: {customer.fullName}</p>
             <p>Email: {customer.email}</p>
@@ -17,8 +16,8 @@ export default function OrderSummary({ order }) {
                     </li>
                 ))}
             </ul>
-            <p>Total Quantity: {totalQuantity}</p>
-            <p>Total Price: {totalPrice}$</p>
+            <p className="totals">Total Quantity: <strong>{totalQuantity}</strong></p>
+            <p className="totals">Total Price: <strong>{totalPrice}$</strong></p>
         </div>
     );
 }

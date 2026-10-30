@@ -12,6 +12,8 @@
     "dev:lab1": "pnpm --filter lab-1 dev",
     "dev:lab2": "pnpm --filter lab-2 dev",
     "dev:lab3": "pnpm --filter lab-3 dev",
+    "dev:lab4": "pnpm --filter lab-4 dev",
+    "dev:lab5": "pnpm --filter lab-5 dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint"
   }
