@@ -29,5 +29,3 @@ export function updateOrchid(id, values) {
 export function deleteOrchid(id) {
   return axios.delete(`${ORCHIDS_URL}/${id}`).then((response) => response.data)
 }
-
-export { ORCHIDS_URL }

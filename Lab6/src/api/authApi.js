@@ -1,10 +1,8 @@
 import axios from 'axios'
 import { ACCOUNTS_URL } from './config'
 
-// Admin login against the /accounts resource on mockapi (no real auth server).
-// Idea: GET all accounts, then find the one with the same username + password and role "admin".
-// We compare with === (exact match) on the client.
-// Plain-text passwords are acceptable only because this is a lab with a mock API.
+// Admin login against the /accounts resource on mockapi.
+
 export function loginAdmin(username, password) {
   return axios.get(ACCOUNTS_URL).then((response) => {
     const account = response.data.find(
@@ -16,5 +14,3 @@ export function loginAdmin(username, password) {
     return account
   })
 }
-
-export { ACCOUNTS_URL }
