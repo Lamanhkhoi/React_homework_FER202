@@ -1,0 +1,112 @@
+[
+  {
+    "id": "1",
+    "name": "Phalaenopsis amabilis",
+    "rating": 5,
+    "isSpecial": true,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Phalaenopsis_amabilis.jpg?width=600",
+    "color": "White",
+    "origin": "Indonesia",
+    "category": "Phalaenopsis"
+  },
+  {
+    "id": "2",
+    "name": "Dendrobium nobile",
+    "rating": 4,
+    "isSpecial": false,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dendrobium_nobile_2.jpg?width=600",
+    "color": "Purple",
+    "origin": "Vietnam",
+    "category": "Dendrobium"
+  },
+  {
+    "id": "3",
+    "name": "Cattleya trianae",
+    "rating": 5,
+    "isSpecial": true,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cattleya_trianae.jpg?width=600",
+    "color": "Pink",
+    "origin": "Colombia",
+    "category": "Cattleya"
+  },
+  {
+    "id": "4",
+    "name": "Vanda coerulea",
+    "rating": 5,
+    "isSpecial": true,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanda_coerulea.jpg?width=600",
+    "color": "Blue",
+    "origin": "India",
+    "category": "Vanda"
+  },
+  {
+    "id": "5",
+    "name": "Paphiopedilum Pinocchio",
+    "rating": 4,
+    "isSpecial": false,
+    "isNatural": false,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paphiopedilum_Pinocchio_%28yellow%29.jpg?width=600",
+    "color": "Yellow",
+    "origin": "Thailand",
+    "category": "Paphiopedilum"
+  },
+  {
+    "id": "6",
+    "name": "Cymbidium Clarisse Austin",
+    "rating": 3,
+    "isSpecial": false,
+    "isNatural": false,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cymbidium_Clarisse_Austin_%27Best_Pink%27_Flowers_2000px.JPG?width=600",
+    "color": "Pink",
+    "origin": "Japan",
+    "category": "Cymbidium"
+  },
+  {
+    "id": "7",
+    "name": "Oncidium baueri",
+    "rating": 3,
+    "isSpecial": false,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oncidium_baueri_yellow_flower.jpg?width=600",
+    "color": "Yellow",
+    "origin": "Brazil",
+    "category": "Oncidium"
+  },
+  {
+    "id": "8",
+    "name": "Phalaenopsis White Cultivar",
+    "rating": 4,
+    "isSpecial": false,
+    "isNatural": false,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Phalaenopsis_Cultivar_White_01.jpg?width=600",
+    "color": "White",
+    "origin": "Taiwan",
+    "category": "Phalaenopsis"
+  },
+  {
+    "id": "9",
+    "name": "Miltonia clowesii",
+    "rating": 4,
+    "isSpecial": true,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Miltonia_clowesii1.jpg?width=600",
+    "color": "Brown",
+    "origin": "Brazil",
+    "category": "Miltonia"
+  },
+  {
+    "id": "10",
+    "name": "Dendrobium kingianum",
+    "rating": 3,
+    "isSpecial": false,
+    "isNatural": true,
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dendrobium_kingianum.jpg?width=600",
+    "color": "Pink",
+    "origin": "Australia",
+    "category": "Dendrobium"
+  }
+]

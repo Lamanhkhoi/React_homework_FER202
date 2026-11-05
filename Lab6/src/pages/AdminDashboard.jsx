@@ -156,7 +156,7 @@ export default function AdminDashboard() {
           <Modal.Title>Delete orchid</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete <strong>{deletingOrchid?.name}</strong>?
+          Are you sure you want to delete <strong>{deletingOrchid && deletingOrchid.name}</strong>?
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setDeletingOrchid(null)}>Cancel</Button>
